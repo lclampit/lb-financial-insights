@@ -147,8 +147,8 @@ section { padding: var(--gap) 60px; }
 .about-profile {
   margin-top: 40px;
   display: flex;
-  align-items: flex-start;
-  gap: 28px;
+  align-items: center;
+  gap: 24px;
 }
 
 .about-headshot {
@@ -178,11 +178,23 @@ section { padding: var(--gap) 60px; }
 }
 
 .about-badge {
-  width: 70px;
-  margin-top: 8px;
+  width: 60px;
+  margin-top: 10px;
   transition: transform 0.2s ease;
 }
+.about-linkedin {
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-light);
+  text-decoration: none;
+  margin-top: 4px;
+  display: inline-block;
+}
 
+.about-linkedin:hover {
+  color: var(--gold);
+}
 .about-badge:hover {
   transform: scale(1.05);
 }
@@ -402,8 +414,11 @@ footer {
   <div class="about-info">
     <div class="about-name">Lilly B</div>
     <div class="about-title">Founder | LB Financial Insights</div>
+    <a href="https://www.linkedin.com/in/lilly-clampit-block/" target="_blank" rel="noopener noreferrer" class="about-linkedin">
+  View my LinkedIn →
+</a>
 
-    <a href="https://www.credly.com/badges/c3d63494-4445-4f50-84b8-aabdc14b7087" target="_blank">
+    <a href="https://www.credly.com/badges/c3d63494-4445-4f50-84b8-aabdc14b7087" target="_blank" rel="noopener noreferrer">
       <img src="quickbooks-badge.png" alt="QuickBooks Certified ProAdvisor" class="about-badge">
     </a>
 
