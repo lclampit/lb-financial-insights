@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>LB Financial Insights</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --cream: #F7F3EE;
+  --warm-white: #FDFAF6;
+  --ink: #1C1A17;
+  --ink-light: #4A4640;
+  --gold: #B8955A;
+  --gold-light: #D4B483;
+  --gold-pale: #F0E6D3;
+  --sage: #8A9E8C;
+  --rule: #D8CEBF;
+  --gap: 120px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--warm-white);
+  color: var(--ink);
+  font-family: 'DM Sans', Georgia, sans-serif;
+  font-weight: 300;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 22px 60px;
+  background: rgba(253,250,246,0.93);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--rule);
+  animation: fadeDown 0.7s ease both;
+}
+.nav-logo {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.2rem; font-weight: 600;
+  letter-spacing: 0.04em; color: var(--ink); text-decoration: none;
+}
+.nav-logo span { color: var(--gold); }
+.nav-links { display: flex; gap: 36px; list-style: none; }
+.nav-links a {
+  font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--ink-light); text-decoration: none; transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--gold); }
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: grid; grid-template-columns: 1fr 1fr;
+  overflow: hidden;
+}
+.hero-left {
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 140px 70px 80px;
+  animation: fadeUp 1s 0.3s ease both;
+}
+.eyebrow {
+  font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 26px;
+}
+.hero-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(3rem, 5vw, 5.2rem);
+  font-weight: 300; line-height: 1.06; color: var(--ink); margin-bottom: 20px;
+}
+.hero-title em { font-style: italic; color: var(--gold); }
+.hero-sub {
+  font-size: 0.93rem; color: var(--ink-light);
+  max-width: 400px; margin-bottom: 48px; line-height: 1.85;
+}
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--ink); color: var(--cream);
+  text-decoration: none; padding: 15px 34px;
+  font-size: 0.76rem; letter-spacing: 0.14em; text-transform: uppercase;
+  transition: background 0.25s, transform 0.2s; width: fit-content;
+}
+.btn:hover { background: var(--gold); transform: translateY(-1px); }
+.btn span { transition: transform 0.2s; }
+.btn:hover span { transform: translateX(4px); }
+
+.hero-right {
+  background: var(--gold-pale); position: relative;
+  display: flex; align-items: flex-end; justify-content: flex-end;
+  overflow: hidden;
+  animation: fadeIn 1.2s 0.5s ease both;
+}
+.hero-grid {
+  position: absolute; inset: 0;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 39px, var(--rule) 39px, var(--rule) 40px),
+    repeating-linear-gradient(90deg, transparent, transparent 39px, var(--rule) 39px, var(--rule) 40px);
+  opacity: 0.45;
+}
+.hero-card {
+  position: relative; background: var(--warm-white);
+  margin: 0 56px 80px 0; padding: 38px 42px;
+  border-left: 3px solid var(--gold); max-width: 310px;
+  box-shadow: 0 20px 60px rgba(28,26,23,0.09);
+  animation: slideLeft 1s 0.7s ease both;
+}
+.hero-card-label {
+  font-size: 0.66rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--sage); margin-bottom: 14px;
+}
+.hero-card-quote {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.28rem; font-weight: 300; font-style: italic;
+  line-height: 1.55; color: var(--ink);
+}
+.hero-card-name { margin-top: 18px; font-size: 0.78rem; color: var(--gold); }
+
+/* SECTION BASE */
+section { padding: var(--gap) 60px; }
+.sec-eyebrow {
+  font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 16px;
+}
+.sec-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(2rem, 3.5vw, 3.2rem);
+  font-weight: 300; line-height: 1.15; color: var(--ink); margin-bottom: 22px;
+}
+.sec-title em { font-style: italic; color: var(--gold); }
+.sec-rule { width: 44px; height: 2px; background: var(--gold); margin-bottom: 28px; }
+.sec-body { font-size: 0.93rem; color: var(--ink-light); max-width: 560px; line-height: 1.85; }
+
+/* ABOUT */
+#about {
+  background: var(--cream);
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+}
+.about-stats { display: flex; flex-direction: column; gap: 24px; }
+.stat {
+  padding: 26px 30px; border: 1px solid var(--rule);
+  background: var(--warm-white); position: relative;
+}
+.stat::before {
+  content: ''; position: absolute; top: 0; left: 0;
+  width: 3px; height: 100%; background: var(--gold);
+}
+.stat-num {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 2.2rem; font-weight: 300; color: var(--gold);
+  line-height: 1; margin-bottom: 6px;
+}
+.stat-label { font-size: 0.82rem; color: var(--ink-light); }
+
+/* SERVICES */
+#services { background: var(--warm-white); }
+.services-header { max-width: 540px; margin-bottom: 56px; }
+.services-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 2px; background: var(--rule);
+}
+.svc {
+  background: var(--warm-white); padding: 48px 44px;
+  transition: background 0.3s;
+}
+.svc:hover { background: var(--cream); }
+.svc-num {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 3.2rem; font-weight: 300; color: var(--gold-pale);
+  line-height: 1; margin-bottom: 18px; transition: color 0.3s;
+}
+.svc:hover .svc-num { color: var(--gold-light); }
+.svc-name {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.55rem; font-weight: 400; color: var(--ink); margin-bottom: 14px;
+}
+.svc-desc { font-size: 0.86rem; color: var(--ink-light); line-height: 1.8; }
+
+/* PRICING */
+#pricing { background: var(--ink); color: var(--cream); }
+#pricing .sec-title { color: var(--cream); }
+#pricing .sec-eyebrow { color: var(--gold-light); }
+#pricing .sec-body { color: rgba(247,243,238,0.6); }
+
+.pricing-grid {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 2px; margin-top: 56px; background: rgba(255,255,255,0.07);
+}
+.plan {
+  background: var(--ink); padding: 48px 40px;
+  transition: background 0.3s;
+}
+.plan:not(.featured):hover { background: #27241f; }
+.plan.featured { background: var(--gold); color: var(--ink); }
+
+.plan-badge {
+  font-size: 0.63rem; letter-spacing: 0.18em; text-transform: uppercase;
+  padding: 5px 12px; background: rgba(255,255,255,0.1);
+  color: var(--gold-light); width: fit-content; margin-bottom: 28px;
+}
+.plan.featured .plan-badge { background: rgba(28,26,23,0.15); color: var(--ink); }
+
+.plan-name {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.6rem; font-weight: 300; margin-bottom: 10px;
+}
+.plan-starting {
+  font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase;
+  opacity: 0.6; margin-bottom: 4px;
+}
+.plan-price {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 3rem; font-weight: 300; line-height: 1;
+  color: var(--gold-light); margin-bottom: 4px;
+}
+.plan.featured .plan-price { color: var(--ink); }
+.plan-price sub { font-size: 1.1rem; opacity: 0.7; vertical-align: baseline; }
+.plan-rule { width: 30px; height: 1px; background: currentColor; opacity: 0.2; margin: 22px 0; }
+.plan-desc { font-size: 0.84rem; line-height: 1.8; opacity: 0.8; margin-bottom: 24px; }
+.plan-list { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+.plan-list li { font-size: 0.82rem; display: flex; gap: 10px; opacity: 0.85; }
+.plan-list li::before { content: '\2014'; color: var(--gold-light); flex-shrink: 0; }
+.plan.featured .plan-list li::before { color: var(--ink); }
+.plan-note {
+  margin-top: 24px; padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  font-size: 0.74rem; opacity: 0.5;
+}
+.plan.featured .plan-note { border-color: rgba(28,26,23,0.15); }
+
+/* HOW */
+#how {
+  background: var(--cream);
+  display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: start;
+}
+.steps { display: flex; flex-direction: column; }
+.step {
+  display: grid; grid-template-columns: 46px 1fr; gap: 22px;
+  padding: 30px 0; border-bottom: 1px solid var(--rule);
+}
+.step:first-child { padding-top: 0; }
+.step-num {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.5rem; font-weight: 300; color: var(--gold); line-height: 1.2;
+}
+.step-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.2rem; font-weight: 400; color: var(--ink); margin-bottom: 7px;
+}
+.step-desc { font-size: 0.84rem; color: var(--ink-light); line-height: 1.8; }
+
+/* CONTACT */
+#contact { background: var(--warm-white); text-align: center; }
+.contact-inner { max-width: 560px; margin: 0 auto; }
+.contact-link {
+  display: inline-flex; align-items: center; gap: 12px;
+  margin-top: 38px; padding: 18px 44px;
+  border: 1px solid var(--ink);
+  font-size: 0.8rem; letter-spacing: 0.13em; text-transform: uppercase;
+  color: var(--ink); text-decoration: none;
+  transition: background 0.25s, color 0.25s;
+}
+.contact-link:hover { background: var(--ink); color: var(--cream); }
+.contact-note { margin-top: 20px; font-size: 0.78rem; color: var(--ink-light); opacity: 0.65; }
+
+/* FOOTER */
+footer {
+  background: var(--ink);
+  color: rgba(247,243,238,0.4);
+  padding: 32px 60px;
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 0.76rem; letter-spacing: 0.06em;
+}
+.footer-logo {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.05rem; color: rgba(247,243,238,0.65);
+}
+.footer-logo span { color: var(--gold-light); }
+
+/* REVEAL */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.8s ease, transform 0.8s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+
+/* ANIMATIONS */
+@keyframes fadeDown { from { opacity:0; transform: translateY(-14px); } to { opacity:1; transform:none; } }
+@keyframes fadeUp   { from { opacity:0; transform: translateY(36px); }  to { opacity:1; transform:none; } }
+@keyframes fadeIn   { from { opacity:0; }                                to { opacity:1; } }
+@keyframes slideLeft{ from { opacity:0; transform: translateX(36px); }  to { opacity:1; transform:none; } }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  nav { padding: 18px 24px; }
+  .nav-links { display: none; }
+  section { padding: 72px 24px; }
+  .hero { grid-template-columns: 1fr; min-height: auto; }
+  .hero-left { padding: 120px 24px 56px; }
+  .hero-right { min-height: 280px; }
+  .hero-card { margin: 0 24px 48px 0; max-width: 260px; }
+  #about { grid-template-columns: 1fr; gap: 44px; }
+  .services-grid { grid-template-columns: 1fr; }
+  .pricing-grid { grid-template-columns: 1fr; }
+  #how { grid-template-columns: 1fr; gap: 44px; }
+  footer { flex-direction: column; gap: 10px; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">LB <span>Financial</span> Insights</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#how">Process</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="eyebrow">Personalized Bookkeeping &amp; Financial Support</p>
+    <h1 class="hero-title">Clarity in<br>your <em>finances,</em><br>confidence in<br>your business.</h1>
+    <p class="hero-sub">LB Financial Insights provides reliable bookkeeping and financial organization for small businesses &mdash; with the personalized attention you deserve.</p>
+    <a href="#contact" class="btn">Get in Touch <span>&rarr;</span></a>
+  </div>
+  <div class="hero-right">
+    <div class="hero-grid"></div>
+    <div class="hero-card">
+      <p class="hero-card-label">My Promise</p>
+      <p class="hero-card-quote">&ldquo;When you work with LB Financial Insights, you work directly with me &mdash; not a team of rotating accountants.&rdquo;</p>
+      <p class="hero-card-name">&mdash; Lilly, Founder</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="reveal">
+    <p class="sec-eyebrow">About</p>
+    <h2 class="sec-title">Solo provider.<br><em>Personal</em> attention.</h2>
+    <div class="sec-rule"></div>
+    <p class="sec-body">LB Financial Insights provides reliable bookkeeping and financial organization for small businesses. As a solo provider, every client receives personalized attention and consistent support. You are never treated like just another account.</p>
+    <br>
+    <p class="sec-body">My goal is to give small business owners clarity and confidence in their financials so they can focus on running and growing their business.</p>
+  </div>
+  <div class="about-stats reveal">
+    <div class="stat">
+      <div class="stat-num">1:1</div>
+      <div class="stat-label">Direct access &mdash; you always work with me, not a rotating team</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Dedicated to small businesses and their unique needs</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">~1 day</div>
+      <div class="stat-label">Typical email response time &mdash; because your questions matter</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="services-header reveal">
+    <p class="sec-eyebrow">Services</p>
+    <h2 class="sec-title">Everything your<br>books <em>need.</em></h2>
+    <div class="sec-rule"></div>
+    <p class="sec-body">From monthly upkeep to catching up on past records, I provide the financial organization and insight small businesses need to thrive.</p>
+  </div>
+  <div class="services-grid reveal">
+    <div class="svc">
+      <div class="svc-num">01</div>
+      <h3 class="svc-name">Monthly Bookkeeping</h3>
+      <p class="svc-desc">Accurate categorization of transactions and reconciliation of accounts so your books stay organized and up to date every month.</p>
+    </div>
+    <div class="svc">
+      <div class="svc-num">02</div>
+      <h3 class="svc-name">Financial Reporting</h3>
+      <p class="svc-desc">Monthly financial reports including Profit &amp; Loss statements and balance summaries to help you understand your business performance.</p>
+    </div>
+    <div class="svc">
+      <div class="svc-num">03</div>
+      <h3 class="svc-name">Catch-Up Bookkeeping</h3>
+      <p class="svc-desc">Behind on your books? I can clean up and organize past financial records so everything is accurate and ready for tax season.</p>
+    </div>
+    <div class="svc">
+      <div class="svc-num">04</div>
+      <h3 class="svc-name">Financial Insights</h3>
+      <p class="svc-desc">Clear explanations of your financial reports so you can make informed, confident decisions for your business &mdash; in plain language.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="reveal">
+    <p class="sec-eyebrow">Pricing</p>
+    <h2 class="sec-title">Transparent plans<br>for every <em>stage.</em></h2>
+    <div class="sec-rule"></div>
+    <p class="sec-body">Simple, honest pricing designed around the needs of small businesses. No surprises.</p>
+  </div>
+  <div class="pricing-grid reveal">
+
+    <div class="plan">
+      <div class="plan-badge">Starter Plan</div>
+      <div class="plan-name">Starter</div>
+      <div class="plan-starting">Starting at</div>
+      <div class="plan-price">$200 <sub>/ month</sub></div>
+      <div class="plan-rule"></div>
+      <p class="plan-desc">Designed for small businesses with straightforward finances and a lower number of monthly transactions.</p>
+      <ul class="plan-list">
+        <li>Monthly transaction categorization</li>
+        <li>Bank account reconciliation</li>
+        <li>Basic financial organization</li>
+        <li>Monthly Profit &amp; Loss report</li>
+        <li>Email support for bookkeeping questions</li>
+      </ul>
+      <p class="plan-note">Ideal for businesses managing up to 100 monthly transactions</p>
+    </div>
+
+    <div class="plan featured">
+      <div class="plan-badge">Most Popular</div>
+      <div class="plan-name">Growth</div>
+      <div class="plan-starting">Starting at</div>
+      <div class="plan-price">$350 <sub>/ month</sub></div>
+      <div class="plan-rule"></div>
+      <p class="plan-desc">Designed for growing businesses that need more detailed financial tracking and insight into their performance.</p>
+      <ul class="plan-list">
+        <li>Everything in the Starter Plan</li>
+        <li>Higher monthly transaction volume</li>
+        <li>Multiple account reconciliation</li>
+        <li>Detailed financial reporting</li>
+        <li>Balance Sheet reporting</li>
+        <li>Monthly financial summary &amp; insights</li>
+        <li>Priority email support</li>
+      </ul>
+      <p class="plan-note">Ideal for businesses managing up to 250 monthly transactions</p>
+    </div>
+
+    <div class="plan">
+      <div class="plan-badge">Flexible</div>
+      <div class="plan-name">Catch-Up</div>
+      <div class="plan-starting">Starting at</div>
+      <div class="plan-price">$75 <sub>/ hour</sub></div>
+      <div class="plan-rule"></div>
+      <p class="plan-desc">If your books are behind or disorganized, I can clean up and organize past records so everything is ready for tax preparation.</p>
+      <ul class="plan-list">
+        <li>Organizing past transactions</li>
+        <li>Reconciliation of prior months</li>
+        <li>Cleaning up inaccurate books</li>
+        <li>Preparing records for tax filing</li>
+      </ul>
+      <p class="plan-note">Billed hourly &mdash; scoped to your needs</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- HOW I WORK -->
+<section id="how">
+  <div class="reveal">
+    <p class="sec-eyebrow">How I Work</p>
+    <h2 class="sec-title">Simple, consistent,<br><em>personal.</em></h2>
+    <div class="sec-rule"></div>
+    <p class="sec-body">I provide personalized bookkeeping support designed specifically for small businesses. There are no rotating accountants or large teams &mdash; just consistent, reliable financial organization and reporting.</p>
+  </div>
+  <div class="steps reveal">
+    <div class="step">
+      <div class="step-num">01</div>
+      <div>
+        <div class="step-title">You Reach Out</div>
+        <p class="step-desc">Send me an email and I&rsquo;ll get back to you within one business day to learn about your business and what you need.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <div>
+        <div class="step-title">We Align on a Plan</div>
+        <p class="step-desc">We discuss your current financial situation and agree on the right service level for your business stage and needs.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <div>
+        <div class="step-title">I Keep Your Books</div>
+        <p class="step-desc">I handle the ongoing categorization, reconciliation, and reporting &mdash; consistently and accurately, every month.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <div>
+        <div class="step-title">You Get Clarity</div>
+        <p class="step-desc">You receive clear reports and plain-language insights so you can make confident, informed decisions for your business.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner reveal">
+    <p class="sec-eyebrow">Contact</p>
+    <h2 class="sec-title">Let&rsquo;s work<br><em>together.</em></h2>
+    <div class="sec-rule" style="margin: 0 auto 28px;"></div>
+    <p class="sec-body" style="margin: 0 auto;">Interested in working together or have questions? I&rsquo;d love to hear from you.</p>
+    <a href="mailto:lilly@lbfinancialinsights.com" class="contact-link">
+      lilly@lbfinancialinsights.com &rarr;
+    </a>
+    <p class="contact-note">I typically respond within one business day.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">LB <span>Financial</span> Insights</div>
+  <div>&copy; 2026 LB Financial Insights. All rights reserved.</div>
+  <div>Personalized Bookkeeping &amp; Financial Support</div>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry, i) {
+      if (entry.isIntersecting) {
+        entry.target.style.transitionDelay = (i % 3) * 0.1 + 's';
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(function(el) { obs.observe(el); });
+</script>
+
+</body>
+</html>
