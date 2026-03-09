@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>LB Financial Insights</title>
+<title>LB Financial Insights | Bookkeeping for Small Businesses</title>
+<meta name="description" content="LB Financial Insights provides personalized bookkeeping services for small businesses including monthly bookkeeping, financial reporting, and QuickBooks support.">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap');
 
@@ -142,6 +143,46 @@ section { padding: var(--gap) 60px; }
 #about {
   background: var(--cream);
   display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+}
+.about-profile {
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.about-headshot {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+}
+
+.about-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.about-name {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.2rem;
+  color: var(--ink);
+}
+
+.about-title {
+  font-size: 0.8rem;
+  color: var(--ink-light);
+  margin-bottom: 10px;
+}
+
+.about-badge {
+  width: 110px;
+  transition: transform 0.2s ease;
+}
+
+.about-badge:hover {
+  transform: scale(1.05);
 }
 .about-stats { display: flex; flex-direction: column; gap: 24px; }
 .stat {
@@ -349,8 +390,24 @@ footer {
     <h2 class="sec-title">Solo provider.<br><em>Personal</em> attention.</h2>
     <div class="sec-rule"></div>
     <p class="sec-body">LB Financial Insights provides reliable bookkeeping and financial organization for small businesses. As a solo provider, every client receives personalized attention and consistent support. You are never treated like just another account.</p>
-    <br>
+  
     <p class="sec-body">My goal is to give small business owners clarity and confidence in their financials so they can focus on running and growing their business.</p>
+
+    <div class="about-profile">
+
+      <img src="headshot.jpg" alt="Lilly B - Founder of LB Financial Insights" class="about-headshot">
+
+  <div class="about-info">
+    <div class="about-name">Lilly B</div>
+    <div class="about-title">Founder | LB Financial Insights</div>
+
+    <a href="https://www.credly.com/badges/c3d63494-4445-4f50-84b8-aabdc14b7087" target="_blank">
+      <img src="quickbooks-badge.png" alt="QuickBooks Certified ProAdvisor" class="about-badge">
+    </a>
+
+  </div>
+
+</div>
   </div>
   <div class="about-stats reveal">
     <div class="stat">
